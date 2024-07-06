@@ -5,9 +5,9 @@ import AOS from 'aos';
 
 // Initialize AOS
 AOS.init({
-  duration: 1000, // Duration of animations
-  easing: 'ease-in-out', // Easing function for animations
-  once: true, // Whether animation should happen only once
+  duration: 1000,
+  easing: 'ease-in-out', 
+  once: true,
 });
 
 const ReferralBenefits = () => {
@@ -18,13 +18,13 @@ const ReferralBenefits = () => {
   };
 
   useEffect(() => {
-    AOS.refresh(); // Refresh AOS to make sure it picks up any changes
+    AOS.refresh(); 
   }, []);
 
   return (
     <section
       className="hidden lg:block py-16  bg-[#f0f4fc] text-[#48535C]"
-      data-aos="fade-up" // Add AOS animation
+      data-aos="fade-up" 
       data-aos-duration="1000"
     >
       <div className="flex justify-center items-center mb-4">

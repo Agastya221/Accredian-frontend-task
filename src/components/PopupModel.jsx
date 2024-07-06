@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -17,6 +17,22 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
   });
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [modalIsOpenState, setModalIsOpenState] = useState(modalIsOpen);
+
+  useEffect(() => {
+    setModalIsOpenState(modalIsOpen);
+    // Reset form data when modal closes
+    if (!modalIsOpen) {
+      setFormData({
+        userName: '',
+        userEmail: '',
+        referralName: '',
+        referralEmail: ''
+      });
+      setSuccessMessage('');
+      setErrorMessage('');
+    }
+  }, [modalIsOpen]);
 
   const handleChange = (e) => {
     setFormData({
@@ -50,15 +66,18 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
 
   return (
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={modalIsOpenState}
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={false} // Disable closing on overlay click
       style={{
         overlay: {
           backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          backdropFilter: 'blur(4px)'
+          backdropFilter: 'blur(4px)',
+          transition: 'opacity 0.3s ease-in-out' // Transition for overlay fade-in effect
         },
         content: {
+          opacity: modalIsOpenState ? 1 : 0, // Fade-in content when modal opens
+          transition: 'opacity 0.3s ease-in-out', // Transition for content fade-in effect
           color: '#000',
           top: '50%',
           left: '50%',
@@ -104,7 +123,7 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
           <input
             type="text"
             name="userName"
-            value={formData.referName}
+            value={formData.userName}
             onChange={handleChange}
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
@@ -149,7 +168,7 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out"
+          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out transform hover:scale-105"
         >
           Submit
         </button>

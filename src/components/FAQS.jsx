@@ -5,21 +5,21 @@ import AOS from 'aos';
 
 // Initialize AOS
 AOS.init({
-  duration: 1000, // Duration of animations
-  easing: 'ease-in-out', // Easing function for animations
-  once: true, // Whether animation should happen only once
-  offset: 50,  // Offset for animation trigger
+  duration: 1000, 
+  easing: 'ease-in-out', 
+  once: true, 
+  offset: 50,  
 });
 
 const Question = () => {
   useEffect(() => {
-    AOS.refresh(); // Refresh AOS to make sure it picks up any changes
+    AOS.refresh(); 
   }, []);
 
   return (
     <section
       className="py-10 w-full bg-transparent text-black"
-      data-aos="fade-up" // Add AOS animation
+      data-aos="fade-up" 
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
       data-aos-once="true"

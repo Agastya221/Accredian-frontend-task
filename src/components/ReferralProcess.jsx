@@ -6,9 +6,9 @@ import AOS from 'aos';
 
 // Initialize AOS
 AOS.init({
-  duration: 1000, // Duration of animations
-  easing: 'ease-in-out', // Easing function for animations
-  once: true, // Whether animation should happen only once
+  duration: 1000, 
+  easing: 'ease-in-out', 
+  once: true, 
 });
 
 const ReferralProcess = () => {
