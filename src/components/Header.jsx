@@ -1,3 +1,4 @@
+
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
@@ -14,10 +15,10 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white flex flex-col">
+    <header className="bg-white  flex flex-col sticky top-0 z-10">
       {/* Mobile and Tablet Header */}
-      <div className="md:hidden relative z-10">
-        <div className="w-full flex justify-between items-center p-4 bg-white shadow-md">
+      <div className="md:hidden sticky top-0 z-10">
+        <div className="w-full flex justify-between items-center p-4 bg-white shadow-md sticky top-0">
           <div className="flex items-center space-x-2">
             <div
               className="text-xl font-bold text-blue-600"
@@ -33,7 +34,7 @@ const Header = () => {
 
           <div className="flex items-center space-x-4">
             <button
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300  sm:block"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 sm:block"
               data-aos="fade-up"
               data-aos-delay="200"
               data-aos-duration="1000"
@@ -69,9 +70,7 @@ const Header = () => {
               : "opacity-0 pointer-events-none"
           }`}
           onClick={() => setIsMenuOpen(false)}
-        ></div>
-
-        {/* Mobile Menu */}
+        ></div> {/* Mobile Menu */}
         <nav
           className={`fixed top-0 right-0 h-full w-64 bg-white p-4 space-y-2 shadow-lg transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -97,13 +96,13 @@ const Header = () => {
           </button>
           <a
             href="#refer"
-            className=" text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
+            className="text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
           >
             Refer & Earn
           </a>
           <a
             href="#benefits"
-            className=" text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
+            className="text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
           >
             Benefits
           </a>
@@ -115,14 +114,16 @@ const Header = () => {
           </a>
           <a
             href="#support"
-            className="hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
+            className="text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
           >
             Support
           </a>
           <button className="text-black bg-gray-100 px-4 py-2 rounded hover:bg-gray-200 transition duration-300 block w-full text-left">
             Login
           </button>
-          <button className="border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 block w-full text-left">
+
+Jaaved, [07-07-2024 00:02]
+<button className="border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 block w-full text-left">
             Try for free
           </button>
         </nav>
@@ -131,7 +132,7 @@ const Header = () => {
       {/* Desktop Header */}
       <div className="hidden lg:block">
         <div
-          className="w-full flex justify-center items-center text-black px-8 py-3 bg-blue-100 text-sm"
+          className="w-full flex justify-center items-center text-black px-8 py-3 bg-blue-100 text-sm sticky top-0 z-10"
           data-aos="fade-down"
           data-aos-duration="1000"
         >
@@ -148,7 +149,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="hidden md:flex justify-between items-center p-6 bg-white shadow-md">
+      <div className="hidden md:flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-10">
         <div className="flex items-center space-x-6">
           <div
             className="text-2xl font-bold text-blue-600"
@@ -157,11 +158,10 @@ const Header = () => {
           >
             accredian
             <br />
-            <span className="text-[10px]  text-gray-700 block mt-[-10px]">
+            <span className="text-[10px] text-gray-700 block mt-[-10px]">
               credentials that matter
             </span>
           </div>
-
           <button
             className="border bg-blue-600 text-white border-gray-300 rounded px-4 py-2 hover:bg-blue-700 transition duration-300"
             data-aos="fade-up"

@@ -32,19 +32,19 @@ const Question = () => {
         >
           Frequently Asked <span className="text-[#1A73E8]">Questions</span>
         </h2>
-        <div className="text-left flex flex-col lg:flex-row max-w-4xl mx-auto">
+        <div className="text-left flex flex-col  lg:flex-row max-w-4xl mx-auto">
           <div
-            className="flex flex-col mb-8 lg:w-1/3"
+            className="flex flex-col  mb-8 lg:w-1/3"
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <button className="p-4 mb-2 mr-9 rounded-lg shadow-md bg-[#F1F3F4] text-[#1A73E8] border-2 border-[#1A73E8]">
+            <button className="p-4  mb-2 rounded-lg shadow-md bg-[#F1F3F4] text-[#1A73E8] border-2 border-[#1A73E8]">
               Eligibility
             </button>
-            <button className="p-4 mb-2 mr-9 rounded-lg shadow-md bg-white text-[#041020] border-2 border-gray-300">
+            <button className="p-4 mb-2  rounded-lg shadow-md bg-white text-[#041020] border-2 border-gray-300">
               How to Use?
             </button>
-            <button className="p-4 mb-2 mr-9 rounded-lg shadow-md bg-white text-[#041020] border-2 border-gray-300">
+            <button className="p-4 mb-2 rounded-lg shadow-md bg-white text-[#041020] border-2 border-gray-300">
               Terms & Conditions
             </button>
           </div>
