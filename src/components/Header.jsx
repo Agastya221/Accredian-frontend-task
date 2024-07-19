@@ -1,10 +1,18 @@
-
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
+import ReferralForm from "./PopupModel";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+    setIsMenuOpen(false); 
+  };
+
+  const closeModal = () => setModalIsOpen(false);
 
   useEffect(() => {
     AOS.init({
@@ -15,7 +23,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white  flex flex-col sticky top-0 z-10">
+    <header className="bg-white flex flex-col top-0 z-10">
       {/* Mobile and Tablet Header */}
       <div className="md:hidden sticky top-0 z-10">
         <div className="w-full flex justify-between items-center p-4 bg-white shadow-md sticky top-0">
@@ -94,12 +102,12 @@ const Header = () => {
               />
             </svg>
           </button>
-          <a
-            href="#refer"
+          <button
+            onClick={openModal}
             className="text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
           >
             Refer & Earn
-          </a>
+          </button>
           <a
             href="#benefits"
             className="text-black hover:text-blue-600 px-4 py-2 rounded transition duration-300 block w-full text-left"
@@ -121,9 +129,7 @@ const Header = () => {
           <button className="text-black bg-gray-100 px-4 py-2 rounded hover:bg-gray-200 transition duration-300 block w-full text-left">
             Login
           </button>
-
-Jaaved, [07-07-2024 00:02]
-<button className="border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 block w-full text-left">
+          <button className="border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 block w-full text-left">
             Try for free
           </button>
         </nav>
@@ -132,7 +138,7 @@ Jaaved, [07-07-2024 00:02]
       {/* Desktop Header */}
       <div className="hidden lg:block">
         <div
-          className="w-full flex justify-center items-center text-black px-8 py-3 bg-blue-100 text-sm sticky top-0 z-10"
+          className="w-full flex justify-center items-center text-black px-8 py-2 bg-blue-100 text-sm sticky top-0 "
           data-aos="fade-down"
           data-aos-duration="1000"
         >
@@ -148,8 +154,8 @@ Jaaved, [07-07-2024 00:02]
         </div>
       </div>
 
-      {/* Main Header */}
-      <div className="hidden md:flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-10">
+      {/* Navbar */}
+      <div className="hidden md:flex justify-between items-center md:px-6 lg:px-40 py-4 bg-white shadow-md sticky top-0 ">
         <div className="flex items-center space-x-6">
           <div
             className="text-2xl font-bold text-blue-600"
@@ -177,12 +183,12 @@ Jaaved, [07-07-2024 00:02]
           data-aos-duration="1000"
           data-aos-delay="400"
         >
-          <a
-            href="#refer"
+          <button
+            onClick={openModal}
             className="hover:text-blue-600 font-medium transition duration-300"
           >
             Refer & Earn
-          </a>
+          </button>
           <a
             href="#benefits"
             className="hover:text-blue-600 font-medium transition duration-300"
@@ -209,6 +215,7 @@ Jaaved, [07-07-2024 00:02]
           </button>
         </nav>
       </div>
+      <ReferralForm modalIsOpen={modalIsOpen} closeModal={closeModal} /> 
     </header>
   );
 };

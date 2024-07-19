@@ -24,9 +24,9 @@ const ReferralProcess = () => {
 
   return (
     <section
-      id="referralprocess"  // Add an id for scroll navigation
-      className="hidden lg:block py-16 bg-[#f0f4fc]  items-center scroll-snap-start min-h-screen"  // Ensure full viewport height
-      data-aos="fade-up"  // Add scroll animation
+      id="referralprocess" 
+      className="hidden lg:block py-16 bg-[#f0f4fc]  items-center scroll-snap-start "  
+      data-aos="fade-up" 
       data-aos-duration="1000"
     >
       <h2

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="hidden lg:block bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 px-4 md:px-44 pb-6 md:pb-10 mb-4">
+        <div className="flex flex-col md:flex-row justify-between items-center border-b-2 border-gray-700 px-4 md:px-44 pb-6 md:pb-10 mb-4">
           <div className="mb-4 lg:mb-0 lg:mr-16">
             <h3 className="text-2xl font-bold">accredian</h3>
             <p className="text-sm">credentials that matter</p>
@@ -17,10 +17,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 lg:px-44">
+        <div className="grid grid-cols-1  lg:grid-cols-3 gap-8 px-6  lg:px-44">
           <div className="mb-8 lg:mb-0">
             <h4 className="text-lg font-semibold">Programs</h4>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-6">
               <li className="flex items-center justify-between"><a href="#" className="hover:underline">Data Science & AI</a><span className="ml-2">+</span></li>
               <li className="flex items-center justify-between"><a href="#" className="hover:underline">Product Management</a><span className="ml-2">+</span></li>
               <li className="flex items-center justify-between"><a href="#" className="hover:underline">Business Analytics</a><span className="ml-2">+</span></li>
@@ -32,9 +32,9 @@ const Footer = () => {
               <li className="flex items-center justify-between"><a href="#" className="hover:underline">Fintech</a><span className="ml-2">+</span></li>
             </ul>
           </div>
-          <div className="mb-8 lg:mb-0">
+          <div className="mb-8 pl-6 lg:mb-0">
             <h4 className="text-lg font-semibold">Contact Us</h4>
-            <div className="mt-4 text-[.66rem] lg:text-sm space-y-2">
+            <div className="mt-4 text-[.66rem] lg:text-[.7rem] space-y-2">
               <p>Email (For Data Science Queries): <a href="mailto:admissions@accredian.com" className="hover:underline">admissions@accredian.com</a></p>
               <p>Email (For Product Management Queries): <a href="mailto:pm@accredian.com" className="hover:underline">pm@accredian.com</a></p>
               <p>Data Science Admission Helpline: <a href="tel:+919079563929" className="hover:underline">+91 9079563929 (9 AM - 7 PM)</a></p>
@@ -51,9 +51,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className='pl-10'>
             <h4 className="text-lg font-semibold">Accredian</h4>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 text-sm space-y-2">
               <li><a href="#" className="hover:underline">About</a></li>
               <li><a href="#" className="hover:underline">Career</a></li>
               <li><a href="#" className="hover:underline">Blog</a></li>
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-4">
+        <div className=" mt-8 pt-6">
           <p className="text-center text-sm lg:text-base">© 2024 Accredian A Brand of FullStack Education Pvt Ltd. All Rights Reserved</p>
         </div>
       </div>

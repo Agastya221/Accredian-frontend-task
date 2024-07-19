@@ -24,7 +24,7 @@ const Question = () => {
       data-aos-easing="ease-in-out"
       data-aos-once="true"
     >
-      <div className="container mx-auto text-center px-4">
+      <div className="container mx-auto text-center lg:h-72 px-4">
         <h2
           className="text-2xl font-semibold mb-8"
           data-aos="fade-down"
@@ -49,7 +49,7 @@ const Question = () => {
             </button>
           </div>
           <div
-            className="flex flex-col p-4 w-full lg:w-2/3"
+            className="flex flex-col p-4  lg:w-2/3 "
             data-aos="fade-left"
             data-aos-delay="200"
           >

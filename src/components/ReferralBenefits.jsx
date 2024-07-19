@@ -27,7 +27,7 @@ const ReferralBenefits = () => {
       data-aos="fade-up" 
       data-aos-duration="1000"
     >
-      <div className="flex justify-center items-center mb-4">
+      <div className="flex justify-center  items-center mb-4">
         <h2
           className="text-3xl font-bold mb-8"
           data-aos="fade-down"
@@ -37,7 +37,7 @@ const ReferralBenefits = () => {
           <span className="text-[#1A73E8]">Referral Benefits?</span>
         </h2>
       </div>
-      <div className="container flex flex-col">
+      <div className=" flex flex-col  ">
         <div className="flex justify-end pr-[200px] mb-4">
           <label className="mr-2 pl-4 text-lg" data-aos="fade-right" data-aos-delay="200">
             Enrolled

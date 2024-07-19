@@ -18,6 +18,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+@keyframes draw {
+  from {
+    stroke-dasharray: 0 120;
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dasharray: 120 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw .path {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: draw 2s ease forwards;
+}
+
+
 /* index.css or App.css */
 
 .scroll-snap-container {
@@ -34,7 +53,6 @@
 html {
   scroll-behavior: smooth; /* Smooth scrolling */
 }
-
 
 
 

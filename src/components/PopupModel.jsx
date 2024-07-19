@@ -4,8 +4,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import debounce from 'lodash.debounce';
 
-// Set the app element for accessibility
 Modal.setAppElement('#root');
 
 const ReferralForm = ({ modalIsOpen, closeModal }) => {
@@ -17,12 +17,20 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
   });
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [modalIsOpenState, setModalIsOpenState] = useState(modalIsOpen);
+  const [isModalVisible, setIsModalVisible] = useState(modalIsOpen);
 
   useEffect(() => {
-    setModalIsOpenState(modalIsOpen);
-    // Reset form data when modal closes
-    if (!modalIsOpen) {
+    if (modalIsOpen) {
+      setIsModalVisible(true);
+    } else {
+      // Use a timeout to delay hiding the modal until after the fade-out animation
+      const timer = setTimeout(() => setIsModalVisible(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [modalIsOpen]);
+
+  useEffect(() => {
+    if (modalIsOpen) {
       setFormData({
         userName: '',
         userEmail: '',
@@ -41,8 +49,8 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Debounced function
+  const submitReferral = debounce(async (formData) => {
     try {
       const response = await axios.post('http://localhost:3000/api/referral', formData);
       console.log('Referral submitted:', response.data);
@@ -62,117 +70,88 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
       console.error('Error submitting referral:', error);
       setErrorMessage('Failed to send referral. Please try again later.');
     }
+  }, 2000 ,[closeModal]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitReferral(formData);
   };
 
   return (
     <Modal
-      isOpen={modalIsOpenState}
+      isOpen={isModalVisible} // Use isModalVisible to control visibility
       onRequestClose={closeModal}
-      shouldCloseOnOverlayClick={false} // Disable closing on overlay click
-      style={{
-        overlay: {
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          backdropFilter: 'blur(4px)',
-          transition: 'opacity 0.3s ease-in-out' // Transition for overlay fade-in effect
-        },
-        content: {
-          opacity: modalIsOpenState ? 1 : 0, // Fade-in content when modal opens
-          transition: 'opacity 0.3s ease-in-out', // Transition for content fade-in effect
-          color: '#000',
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          width: '100%',
-          maxWidth: '500px',
-          padding: '30px',
-          borderRadius: '12px',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-          position: 'relative',
-          backgroundColor: '#ffffff'
-        }
-      }}
+      shouldCloseOnOverlayClick={false}
+      className={`fixed inset-0 flex items-center justify-center p-4 bg-opacity-50 bg-gray-300 backdrop-blur transition-opacity duration-300 ${modalIsOpen ? 'animate-modalFadeIn' : 'animate-modalFadeOut'}`}
+      overlayClassName={`fixed inset-0 bg-transparent transition-opacity duration-300 ${modalIsOpen ? 'opacity-100' : 'opacity-0'}`}
     >
-      <button
-        onClick={closeModal}
-        style={{
-          position: 'absolute',
-          top: '15px',
-          right: '15px',
-          background: '#f0f0f0',
-          border: 'none',
-          borderRadius: '50%',
-          padding: '8px',
-          cursor: 'pointer',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-          transition: 'background-color 0.3s ease',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#e0e0e0')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#f0f0f0')}
-      >
-        <FontAwesomeIcon icon={faTimes} size="lg" color="#007bff" />
-      </button>
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">Refer Someone</h2>
-      {successMessage && <p className="text-green-500 mb-4 text-center text-lg">{successMessage}</p>}
-      {errorMessage && <p className="text-red-500 mb-4 text-center text-lg">{errorMessage}</p>}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label className="block text-sm font-medium mb-2 text-gray-700">Your Name</label>
-          <input
-            type="text"
-            name="userName"
-            value={formData.userName}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
-            placeholder="Enter your name"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-2 text-gray-700">Your Email</label>
-          <input
-            type="email"
-            name="userEmail"
-            value={formData.userEmail}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-2 text-gray-700">Referral Name</label>
-          <input
-            type="text"
-            name="referralName"
-            value={formData.referralName}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
-            placeholder="Enter the referral's name"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-2 text-gray-700">Referral Email</label>
-          <input
-            type="email"
-            name="referralEmail"
-            value={formData.referralEmail}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
-            placeholder="Enter the referral's email"
-          />
-        </div>
+      <div className="relative bg-white rounded-lg shadow-lg max-w-lg w-full p-6 mx-4 md:mx-auto transform scale-95 transition-transform duration-300 ease-in-out">
         <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out transform hover:scale-105"
+          onClick={closeModal}
+          className="absolute top-3 right-3 bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition duration-300"
         >
-          Submit
+          <FontAwesomeIcon icon={faTimes} size="lg" color="#007bff" />
         </button>
-      </form>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-blue-600">Refer Someone</h2>
+        {successMessage && <p className="text-green-500 mb-4 text-center text-lg">{successMessage}</p>}
+        {errorMessage && <p className="text-red-500 mb-4 text-center text-lg">{errorMessage}</p>}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">Your Name</label>
+            <input
+              type="text"
+              name="userName"
+              value={formData.userName}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">Your Email</label>
+            <input
+              type="email"
+              name="userEmail"
+              value={formData.userEmail}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">Referral Name</label>
+            <input
+              type="text"
+              name="referralName"
+              value={formData.referralName}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500  focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              placeholder="Enter the referral's name"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">Referral Email</label>
+            <input
+              type="email"
+              name="referralEmail"
+              value={formData.referralEmail}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              placeholder="Enter the referral's email"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </Modal>
   );
 };
