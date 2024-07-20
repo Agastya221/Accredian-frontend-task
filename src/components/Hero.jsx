@@ -25,7 +25,7 @@ const Hero = () => {
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-100 py-2 ">
       {/* Hero content for medium and larger screens */}
       <div className="hidden lg:block w-4/6 mx-auto">
         <div className="container mx-auto text-center">

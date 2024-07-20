@@ -16,7 +16,7 @@ const Question = () => {
   }, []);
 
   return (
-    <section className="py-10 w-full bg-transparent text-black" data-aos="fade-up">
+    <section className="py-4 w-full bg-transparent text-black" data-aos="fade-up">
       <div className="container mx-auto text-center lg:h-72 px-4">
         <h2 className="text-2xl font-semibold mb-8" data-aos="fade-down" data-aos-delay="100">
           Frequently Asked <span className="text-[#1A73E8]">Questions</span>
@@ -65,7 +65,7 @@ const Question = () => {
               <h3 className="text-xl font-medium mb-2" data-aos="fade-left" data-aos-delay="700">
                 Want to delve deeper into the program?
               </h3>
-              <p className="mb-2 text-xs" data-aos="fade-left" data-aos-delay="800">
+              <p className="mb-4 text-xs" data-aos="fade-left" data-aos-delay="800">
                 Share your details to receive expert insights from our program team!
               </p>
             </div>
