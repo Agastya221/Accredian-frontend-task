@@ -7,10 +7,6 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        z: {
-          'modal': '9999',
-          'modal-overlay': '9998',
-        },
         modalFadeIn: {
           '0%': {
             opacity: '0',
@@ -36,23 +32,39 @@ export default {
         modalFadeIn: 'modalFadeIn 0.3s ease-out',
         modalFadeOut: 'modalFadeOut 0.3s ease-in',
       },
-
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
       },
       colors: {
-       "customcolor" : "#E5EFFB",
-       'logincolor' : "#EAEDF1"
-
+        customcolor: "#E5EFFB",
+        logincolor: "#EAEDF1",
+      },
+      backgroundColor: {
+        'autofill': '#ffffff',
+      },
+      extend: {
+        outlineColor: {
+          'autofill': '#ffffff',
+        },
+      },
     },
   },
-  plugins: [],
-
-
-
-}}
-
-
-
-// tailwind.config.js
-
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.autofill:bg-white': {
+          ':-webkit-autofill': {
+            'background-color': '#ffffff',
+            'color': '#000000',
+          },
+        },
+        '.autofill:focus:bg-white': {
+          ':-webkit-autofill:focus': {
+            'background-color': '#ffffff',
+            'color': '#000000',
+          },
+        },
+      });
+    },
+  ],
+};
