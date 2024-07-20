@@ -52,9 +52,10 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
 
   // Debounced function
   const submitReferral = debounce(async (formData) => {
+    console.log(formData);
     setIsSubmitting(true);  
     try {
-      await axios.post('http://localhost:3000/api/referral', formData);
+      await axios.post('https://accredian-backend-task-jc3m.onrender.com/api/referral', formData);
       setFormData({
         userName: '',
         userEmail: '',
