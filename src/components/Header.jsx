@@ -34,7 +34,7 @@ const Header = () => {
               data-aos-duration="1000"
             >
               accredian
-              <span className="text-xs pl-1 text-gray-700 block mt-[-4px]">
+              <span className="text-xs  text-gray-700 block mt-[-4px]">
               credentials that matter
               </span>
             </div>
@@ -165,7 +165,7 @@ const Header = () => {
             accredian
             <br />
             <span className="text-[10px] text-gray-700 block mt-[-10px]">
-              credentials that matter
+            credentials that matter
             </span>
           </div>
           <button

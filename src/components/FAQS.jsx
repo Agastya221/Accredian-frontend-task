@@ -6,13 +6,14 @@ import AOS from 'aos';
 const Question = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
-      easing: 'ease-in-out', 
-      once: true, 
-      offset: 20,  
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 10,  // Further reduced offset value
+      anchorPlacement: 'top-bottom',  // Adjusted anchor placement
     });
 
-    AOS.refresh(); 
+    AOS.refresh();
   }, []);
 
   return (
@@ -61,7 +62,7 @@ const Question = () => {
             <div className="w-16 h-16 bg-white rounded-lg border-4 border-[#609CEB] flex items-center justify-center mb-4 lg:mb-0 lg:mr-4" data-aos="zoom-in" data-aos-delay="600">
               <img src={icn} alt="icon" className="w-10 h-10" />
             </div>
-            <div className="flex flex-col  lg:ml-4 ">
+            <div className="flex flex-col lg:ml-4">
               <h3 className="text-xl font-medium mb-2" data-aos="fade-left" data-aos-delay="700">
                 Want to delve deeper into the program?
               </h3>
