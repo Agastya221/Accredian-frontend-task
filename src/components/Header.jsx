@@ -1,18 +1,18 @@
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
-import ReferralForm from "./PopupModel";
+// import ReferralForm from "./PopupModel";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
-    setModalIsOpen(true);
-    setIsMenuOpen(false); 
+    // setModalIsOpen(true);
+    setIsMenuOpen(false);
   };
 
-  const closeModal = () => setModalIsOpen(false);
+  // const closeModal = () => setModalIsOpen(false);
 
   useEffect(() => {
     AOS.init({
@@ -39,7 +39,6 @@ const Header = () => {
               </span>
             </div>
           </div>
-
           <div className="flex items-center space-x-4">
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 sm:block"
@@ -49,7 +48,6 @@ const Header = () => {
             >
               Explore &gt;
             </button>
-
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-600 focus:outline-none"
@@ -70,7 +68,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-
+        {/* Mobile Menu */}
         <div
           className={`fixed inset-0 bg-gray-800 bg-opacity-50 transition-opacity duration-300 ${
             isMenuOpen
@@ -78,7 +76,7 @@ const Header = () => {
               : "opacity-0 pointer-events-none"
           }`}
           onClick={() => setIsMenuOpen(false)}
-        ></div> {/* Mobile Menu */}
+        ></div>
         <nav
           className={`fixed top-0 right-0 h-full w-64 bg-white p-4 space-y-2 shadow-lg transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -155,7 +153,7 @@ const Header = () => {
       </div>
 
       {/* Navbar */}
-      <div className="hidden md:flex justify-between items-center md:px-6 lg:px-40 py-4 bg-white shadow-md sticky top-0 ">
+      <div className="hidden md:flex justify-between items-center md:px-6 lg:px-40 py-4 bg-white shadow-md sticky top-0">
         <div className="flex items-center space-x-6">
           <div
             className="text-2xl font-bold text-blue-600"
@@ -215,7 +213,7 @@ const Header = () => {
           </button>
         </nav>
       </div>
-      <ReferralForm modalIsOpen={modalIsOpen} closeModal={closeModal} /> 
+      {/* <ReferralForm modalIsOpen={modalIsOpen} closeModal={closeModal} /> */}
     </header>
   );
 };

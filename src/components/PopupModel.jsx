@@ -79,7 +79,7 @@ const ReferralForm = ({ modalIsOpen, closeModal }) => {
 
   return (
     <Modal
-      isOpen={isModalVisible} // Use isModalVisible to control visibility
+      isOpen={isModalVisible} 
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={false}
       className={`fixed inset-0 flex items-center justify-center p-4 bg-opacity-50 bg-gray-300 backdrop-blur transition-opacity duration-300 ${modalIsOpen ? 'animate-modalFadeIn' : 'animate-modalFadeOut'}`}
