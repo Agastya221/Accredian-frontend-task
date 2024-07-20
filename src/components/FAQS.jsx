@@ -17,7 +17,7 @@ const Question = () => {
   }, []);
 
   return (
-    <section className="py-4 w-full bg-transparent text-black" data-aos="fade-up">
+    <section className="py-4 w-full bg-transparent text-black" data-aos="fade-down">
       <div className="container mx-auto text-center lg:h-72 px-4">
         <h2 className="text-2xl font-semibold mb-8" data-aos="fade-down" data-aos-delay="100">
           Frequently Asked <span className="text-[#1A73E8]">Questions</span>
@@ -36,7 +36,7 @@ const Question = () => {
           </div>
           <div className="flex flex-col p-4 lg:w-2/3" data-aos="fade-left" data-aos-delay="200">
             <details open className="mb-4 group">
-              <summary className="cursor-pointer text-base text-[#1A73E8] font-semibold flex items-center" data-aos="fade-up" data-aos-delay="300">
+              <summary className="cursor-pointer text-base text-[#1A73E8] font-semibold flex items-center" data-aos="fade-down" data-aos-delay="300">
                 <span>Do I need to have prior Product Management and Project Management experience to enroll in the program?</span>
                 <span className="ml-auto transition-transform duration-300 transform group-open:rotate-90">›</span>
               </summary>
@@ -45,7 +45,7 @@ const Question = () => {
               </p>
             </details>
             <details className="mb-4 group">
-              <summary className="cursor-pointer text-base text-[#041020] font-semibold flex items-center" data-aos="fade-up" data-aos-delay="400">
+              <summary className="cursor-pointer text-base text-[#041020] font-semibold flex items-center" data-aos="fade-down" data-aos-delay="400">
                 <span>What is the minimum system configuration required?</span>
                 <span className="ml-auto transition-transform duration-300 transform group-open:rotate-90">›</span>
               </summary>
@@ -56,7 +56,7 @@ const Question = () => {
           </div>
         </div>
       </div>
-      <div className="mt-16 mx-auto w-8/12 rounded-lg bg-[#1A73E8] text-white py-8 px-12" data-aos="fade-up" data-aos-delay="500">
+      <div className="mt-16 mx-auto w-8/12 rounded-lg bg-[#1A73E8] text-white py-8 px-12" data-aos="fade-down" data-aos-delay="500">
         <div className="text-center">
           <div className="flex flex-col lg:flex-row justify-between items-center">
             <div className="w-16 h-16 bg-white rounded-lg border-4 border-[#609CEB] flex items-center justify-center mb-4 lg:mb-0 lg:mr-4" data-aos="zoom-in" data-aos-delay="600">
@@ -66,11 +66,11 @@ const Question = () => {
               <h3 className="text-xl font-medium mb-2" data-aos="fade-left" data-aos-delay="700">
                 Want to delve deeper into the program?
               </h3>
-              <p className="mb-4 text-xs" data-aos="fade-left" data-aos-delay="800">
+              <p className="mb-4 text-xs" data-aos="fade-left" data-aos-delay="700">
                 Share your details to receive expert insights from our program team!
               </p>
             </div>
-            <button className="bg-white text-[#1A73E8] font-semibold px-6 py-3 rounded-lg lg:ml-auto" data-aos="fade-up" data-aos-delay="900">
+            <button className="bg-white text-[#1A73E8] font-semibold px-6 py-3 rounded-lg lg:ml-auto" data-aos="fade-down" data-aos-delay="750">
               Get in touch
             </button>
           </div>
