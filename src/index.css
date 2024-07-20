@@ -37,21 +37,21 @@
 }
 
 
-/* index.css or App.css */
+
 
 .scroll-snap-container {
-  scroll-snap-type: y mandatory; /* Snap to vertical sections */
+  scroll-snap-type: y mandatory; 
  
 }
 
 .scroll-snap-container > * {
-  scroll-snap-align: start; /* Snap to the start of each section */
+  scroll-snap-align: start; 
 }
 
 
 
 html {
-  scroll-behavior: smooth; /* Smooth scrolling */
+  scroll-behavior: smooth; 
   overflow-x: hidden;
 
 }

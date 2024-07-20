@@ -184,7 +184,7 @@ const Header = () => {
           data-aos-delay="400"
         >
           <button
-           
+           onClick={openModal}
             className="hover:text-blue-600 font-medium transition duration-300"
           >
             Refer & Earn

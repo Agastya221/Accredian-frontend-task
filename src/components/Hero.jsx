@@ -7,23 +7,22 @@ import ReferralForm from "./PopupModel";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
-AOS.init({
-  duration: 1000, 
-  easing: 'ease-in-out', 
-  once: true, 
-  offset: 50,  
-});
-
 const Hero = () => {
   const [activeTab, setActiveTab] = useState("Refer");
-  const [modalIsOpen, setModalIsOpen] = useState(false); 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: 'ease-in-out', 
+      once: true, 
+      offset: 50,  
+    });
+    AOS.refresh();
+  }, []);
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
-
-  useEffect(() => {
-    AOS.refresh();
-  }, []);
 
   return (
     <section className="bg-gray-100 py-12">
